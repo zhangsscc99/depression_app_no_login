@@ -3,13 +3,11 @@ package com.nyu.provider;
 import com.alibaba.fastjson2.JSON;
 import com.nyu.dto.AccessTokenDTO;
 import com.nyu.dto.GithubUser;
-import com.sun.deploy.net.DownloadException;
+import okhttp3.MediaType;
 import okhttp3.*;
 import org.springframework.stereotype.Component;
-
 import java.io.IOException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 
 
 
@@ -21,7 +19,9 @@ public class GithubProvider {
 
     public String getAccessToken(AccessTokenDTO accessTokenDTO) throws IOException {
 //mediatype.get or mediatype.parse
-        MediaType mediaType = MediaType.parse("application/json; charset=utf-8");
+
+
+        MediaType mediaType = MediaType.get("application/json; charset=utf-8");
 
         OkHttpClient client = new OkHttpClient();
 
