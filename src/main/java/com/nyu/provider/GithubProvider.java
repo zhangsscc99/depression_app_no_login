@@ -1,15 +1,13 @@
 package com.nyu.provider;
 
-import com.alibaba.fastjson2.JSON;
+
+import com.alibaba.fastjson.JSON;
 import com.nyu.dto.AccessTokenDTO;
 import com.nyu.dto.GithubUser;
 import okhttp3.MediaType;
 import okhttp3.*;
 import org.springframework.stereotype.Component;
 import java.io.IOException;
-
-
-
 
 
 @Component
@@ -50,9 +48,12 @@ public class GithubProvider {
     public static GithubUser getUser(String accessToken){
         OkHttpClient client = new OkHttpClient();
         //RequestBody body = RequestBody.create(JSON, json);
+
         Request request = new Request.Builder()
-                .url("https://api.github.com/user?access_token=" + accessToken)
+                .url("https://api.github.com/user")
+                .header("Authorization","token "+accessToken)
                 .build();
+
 
         try {
             Response response = client.newCall(request).execute();

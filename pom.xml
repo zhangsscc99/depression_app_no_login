@@ -45,9 +45,9 @@
     </dependency>
 
     <dependency>
-      <groupId>com.alibaba.fastjson2</groupId>
-      <artifactId>fastjson2</artifactId>
-      <version>2.0.24</version>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.2.57</version>
     </dependency>
 
 
@@ -63,12 +63,15 @@
       <artifactId>logback-classic</artifactId>
       <version>1.2.3</version>
     </dependency>
-
-
-
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+    </dependency>
 
 
   </dependencies>
+
+
 
 
 

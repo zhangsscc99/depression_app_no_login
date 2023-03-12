@@ -6,12 +6,14 @@ import com.nyu.dto.GithubUser;
 import com.nyu.provider.GithubProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
+
 
 @Controller
 public class AuthorizeController {
@@ -37,8 +39,10 @@ public class AuthorizeController {
         accessTokenDTO.setRedirect_url(redirectUrl);
         accessTokenDTO.setState(state);
         String accessToken = githubProvider.getAccessToken(accessTokenDTO);
-        GithubUser user = GithubProvider.getUser(accessToken);
-        System.out.println(user.getName());
+        GithubUser githubUser = GithubProvider.getUser(accessToken);
+        //System.out.println(user.getName());
+
+
 
 
         return "index";
