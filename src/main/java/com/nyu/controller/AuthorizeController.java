@@ -1,5 +1,6 @@
 package com.nyu.controller;
 
+
 import com.nyu.mapper.UserMapper;
 import com.nyu.model.User;
 import org.slf4j.Logger;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.UUID;
 
@@ -43,8 +45,8 @@ public class AuthorizeController {
 
     @GetMapping("/callback")
     public String callback(@RequestParam(name="code") String code,
-                           @RequestParam(name="state") String state
-    ) throws Exception {
+                           @RequestParam(name="state") String state,
+                           HttpServletRequest request) throws IOException {
 
         AccessTokenDTO accessTokenDTO = new AccessTokenDTO();
         accessTokenDTO.setClient_id(clientId);
@@ -71,12 +73,5 @@ public class AuthorizeController {
             return "redirect:/";
         }
 
-
-
-
-
-
-
-        return "index";
     }
 }
