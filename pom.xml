@@ -121,4 +121,26 @@
 
   <name>Archetype - nyu-software-new</name>
   <url>http://maven.apache.org</url>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.flywaydb</groupId>
+        <artifactId>flyway-maven-plugin</artifactId>
+        <version>9.8.1</version>
+        <configuration>
+          <url>jdbc:h2:~/community</url>
+          <user>yuting</user>
+          <password>951369ting</password>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.197</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+    </plugins>
+  </build>
 </project>
