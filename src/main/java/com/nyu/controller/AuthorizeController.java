@@ -1,8 +1,7 @@
 package com.nyu.controller;
 
 
-import com.nyu.mapper.UserMapper;
-import com.nyu.model.User;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,8 +41,6 @@ public class AuthorizeController {
     private String redirectUrl;
 
 
-    @Autowired
-    private UserMapper userMapper;
 
     @GetMapping("/callback")
     public String callback(@RequestParam(name="code") String code,
@@ -62,21 +59,7 @@ public class AuthorizeController {
         System.out.println(githubUser.getName()+" 这是用户名");
         System.out.println(githubUser.getId()+" 这是id");
 
-        if (githubUser != null){
-            User user = new User();
-            String token = UUID.randomUUID().toString();
-            user.setToken(token);
-            user.setName(githubUser.getName());
-            user.setAccountId(String.valueOf(githubUser.getId()));
-            user.setGmtCreate(System.currentTimeMillis());
-            user.setGmtModified(user.getGmtCreate());
-            userMapper.insert(user);
-            response.addCookie(new Cookie("token", token));
-            request.getSession().setAttribute("user",githubUser);
-            return "redirect:/";
-        }else{
-            return "redirect:/";
-        }
+        return "index";
 
     }
 }
