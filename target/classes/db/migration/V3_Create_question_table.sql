@@ -1,4 +1,4 @@
-CREATE TABLE table_name
+create table table_name
 (
     id           INTEGER AUTO_INCREMENT PRIMARY KEY ,
     title VARCHAR(50),
